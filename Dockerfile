@@ -4,4 +4,7 @@ LABEL maintainer="dev@ballerina.io"
 COPY target/ecomm-back-end-mock.balx /home/ballerina
 COPY ecomm-back-end-mock/ballerina.conf /home/ballerina
 
+COPY dependencies/packages/dependencies/* /ballerina/runtime/bre/lib/
+COPY dependencies/packages/balo/* /ballerina/runtime/lib/repo/
+
 CMD ballerina run ecomm-back-end-mock.balx

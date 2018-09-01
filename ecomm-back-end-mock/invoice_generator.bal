@@ -34,7 +34,7 @@ function main(string... args) {
         interval, delay = delay);
 
     timer.start();
-    runtime:sleep(20000);
+    runtime:sleep(20000000);
 }
 
 function generateInvoice() returns error? {
