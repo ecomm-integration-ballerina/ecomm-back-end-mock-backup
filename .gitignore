@@ -1,4 +1,5 @@
-.idea/
-target/
+.idea
+target
+.DS_Store
 .ballerina
 ballerina.conf
