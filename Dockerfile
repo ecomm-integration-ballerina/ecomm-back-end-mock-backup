@@ -1,5 +1,5 @@
 FROM ballerina/ballerina:0.980.1
-LABEL maintainer="dev@ballerina.io"
+LABEL maintainer="rajkumarr@wso2.com"
 
 COPY target/ecomm-back-end-mock.balx /home/ballerina
 COPY ecomm-back-end-mock/ballerina.conf /home/ballerina
