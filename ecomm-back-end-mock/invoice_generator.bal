@@ -92,8 +92,6 @@ function generateInvoice() returns error? {
         invoices.selectDescendants("IDOC").setChildren(children);
     }
 
-    io:println(invoices);
-
     // uploading invoices to SFTP
     string invoiceAsString = <string> invoices;
     io:ByteChannel bchannel = io:createMemoryChannel(invoiceAsString.toByteArray("UTF-8"));
