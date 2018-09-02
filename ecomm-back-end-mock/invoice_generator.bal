@@ -12,12 +12,12 @@ task:Timer? timer;
 
 endpoint ftp:Client invoiceSFTPClient {
     protocol: ftp:SFTP,
-    host: config:getAsString("op-be.invoice.sftp.host"),
-    port: config:getAsInt("op-be.invoice.sftp.port"),
+    host: config:getAsString("ecomm-backend.invoice.sftp.host"),
+    port: config:getAsInt("ecomm-backend.invoice.sftp.port"),
     secureSocket: {
         basicAuth: {
-            username: config:getAsString("op-be.invoice.sftp.username"),
-            password: config:getAsString("op-be.invoice.sftp.password")
+            username: config:getAsString("ecomm-backend.invoice.sftp.username"),
+            password: config:getAsString("ecomm-backend.invoice.sftp.password")
         }
     }
 };
@@ -27,13 +27,14 @@ function main(string... args) {
     (function() returns error?) onTriggerFunction = generateInvoice;
     function(error) onErrorFunction = handleError;
 
-    int interval = config:getAsInt("op-be.invoice.etl.interval");
-    int delay = config:getAsInt("op-be.invoice.etl.initialDelay");
+    int interval = config:getAsInt("ecomm-backend.invoice.etl.interval");
+    int delay = config:getAsInt("ecomm-backend.invoice.etl.initialDelay");
 
     timer = new task:Timer(onTriggerFunction, onErrorFunction,
         interval, delay = delay);
 
     timer.start();
+    // temp hack to keep the process running
     runtime:sleep(20000000);
 }
 
@@ -96,7 +97,7 @@ function generateInvoice() returns error? {
     // uploading invoices to SFTP
     string invoiceAsString = <string> invoices;
     io:ByteChannel bchannel = io:createMemoryChannel(invoiceAsString.toByteArray("UTF-8"));
-    string path = config:getAsString("op-be.invoice.sftp.path") + "/original/" + invoiceName + ".xml";
+    string path = config:getAsString("ecomm-backend.invoice.sftp.path") + "/original/" + invoiceName + ".xml";
 
     log:printInfo("Uploading invoice : " + invoiceName + " to sftp");
     error? filePutErr = invoiceSFTPClient -> put(path, bchannel);
