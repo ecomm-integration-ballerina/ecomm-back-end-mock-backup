@@ -1,0 +1,29 @@
+---
+apiVersion: "batch/v1"
+kind: "Job"
+metadata:
+  annotations: {}
+  finalizers: []
+  labels: {}
+  name: "ecomm-back-end-mock-job"
+  ownerReferences: []
+spec:
+  template:
+    spec:
+      containers:
+      - args: []
+        command: []
+        env: []
+        envFrom: []
+        image: "ecomm-back-end-mock:latest"
+        imagePullPolicy: "IfNotPresent"
+        name: "ecomm-back-end-mock-job"
+        ports: []
+        volumeMounts: []
+      hostAliases: []
+      imagePullSecrets: []
+      initContainers: []
+      nodeSelector: {}
+      restartPolicy: "Never"
+      tolerations: []
+      volumes: []

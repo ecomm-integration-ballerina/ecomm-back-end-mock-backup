@@ -6,6 +6,7 @@ import ballerina/runtime;
 import ballerina/log;
 import ballerina/http;
 import ballerina/config;
+import ballerinax/kubernetes;
 
 int count;
 task:Timer? timer;
@@ -22,6 +23,7 @@ endpoint ftp:Client invoiceSFTPClient {
     }
 };
 
+@kubernetes:Job {}
 function main(string... args) {
 
     (function() returns error?) onTriggerFunction = generateInvoice;
