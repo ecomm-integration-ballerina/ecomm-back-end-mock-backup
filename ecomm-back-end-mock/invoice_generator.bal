@@ -7,6 +7,7 @@ import ballerina/log;
 import ballerina/http;
 import ballerina/config;
 import ballerinax/kubernetes;
+import ballerinax/docker;
 
 int count;
 task:Timer? timer;
@@ -23,6 +24,22 @@ endpoint ftp:Client invoiceSFTPClient {
     }
 };
 
+//@docker:CopyFiles {
+//    files: [
+//        {
+//            source: "ballerina.conf",
+//            target: "/home/ballerina/ballerina.conf", isBallerinaConf: true
+//        },
+//        {
+//            source: "/Library/Ballerina/ballerina-0.981.1/bre/lib/wso2-ftp-package-0.97.4.jar",
+//            target: "/ballerina/ballerina-0.981.1/bre/lib/wso2-ftp-package-0.97.4.jar"
+//        },
+//        {
+//            source: "/Library/Ballerina/ballerina-0.981.1/lib/repo/wso2/ftp/0.0.0/ftp.zip",
+//            target: "/ballerina/ballerina-0.981.1/lib/repo/wso2/ftp/0.0.0/ftp.zip"
+//        }
+//    ]
+//}
 @kubernetes:Job {}
 function main(string... args) {
 

@@ -1,4 +1,4 @@
-FROM ballerina/ballerina:0.980.1
+FROM ballerina/ballerina:0.981.1
 LABEL maintainer="rajkumarr@wso2.com"
 
 COPY target/ecomm-back-end-mock.balx /home/ballerina
